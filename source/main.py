@@ -12,7 +12,7 @@ class WordIndexer:
       # print(word, on_char)
       # print(working_dict)
       working_char = word[on_char]
-      if working_char not in working_dict.keys():
+      if working_char not in working_dict:
         working_dict[working_char] = dict()
       working_dict[working_char] = self._indexTool(working_dict[working_char], word, on_char + 1)
     else:
