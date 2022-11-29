@@ -23,7 +23,8 @@ class WordIndexer:
 def main():
   data_folder = join(dirname(realpath(__file__)), 'data')
   with open(join(data_folder, 'word_list.txt')) as f:
-    word_data = f.read()
+    word_data = f.read().lower()
+
   words = word_data.split(',')
   word_indexer = WordIndexer()
   indexed_words = word_indexer.indexer(words)
