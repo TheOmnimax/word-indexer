@@ -21,7 +21,7 @@ class WordIndexer:
     return working_dict
 
 def main():
-  data_folder = join(dirname(dirname(realpath(__file__))), 'data')
+  data_folder = join(dirname(realpath(__file__)), 'data')
   with open(join(data_folder, 'word_list.txt')) as f:
     word_data = f.read()
   words = word_data.split(',')
