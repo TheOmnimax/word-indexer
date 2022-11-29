@@ -1,12 +1,7 @@
-
 from os.path import dirname, join, realpath
 import json
 
 class WordIndexer:
-  def __init__(self):
-    word_index = dict()
-    pass
-
   def _indexTool(self, working_dict: dict, word: str, on_char: int):
     if on_char < len(word):
       # print(word, on_char)
@@ -26,12 +21,13 @@ class WordIndexer:
     return working_dict
 
 def main():
-  with open(join(dirname(realpath(__file__)), 'data', 'word_list.txt')) as f:
+  data_folder = join(dirname(dirname(realpath(__file__))), 'data')
+  with open(join(data_folder, 'word_list.txt')) as f:
     word_data = f.read()
   words = word_data.split(',')
   word_indexer = WordIndexer()
   indexed_words = word_indexer.indexer(words)
-  with open(join(dirname(realpath(__file__)), 'data', 'word_index.json'), 'w+') as f:
+  with open(join(data_folder, 'word_trie.json'), 'w+') as f:
     json.dump(indexed_words, f)
 
 
