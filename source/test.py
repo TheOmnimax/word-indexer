@@ -3,14 +3,10 @@ import json
 epoch_time = int(time.time())
 
 from os.path import dirname, join, realpath
-from sys import stdout
-
-import logging
 
 def main():
-  
   ROOT_FOLDER = dirname(realpath(__file__))
-  with open(join(ROOT_FOLDER, 'data', 'word_index.json')) as f:
+  with open(join(ROOT_FOLDER, 'data', 'word_trie.json')) as f:
     word_index = json.loads(f.read())
     working_index = word_index
     working_letter = 'start'
@@ -20,6 +16,9 @@ def main():
       if working_letter == '':
         print('Bye!')
         break
+      elif len(working_letter) > 1:
+        print('Must be a single letter!')
+        continue
       working_letter = working_letter.lower()
       if working_letter in working_index:
         working_index = working_index[working_letter]
